@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 import html, time
 import pathlib
 
-dir_path = pathlib.Path.cwd() + '/'
+dir_path = str(pathlib.Path.cwd()) + '/'
 
 def filterLatest(art_list):
     jugadores = open(dir_path + 'jugadores.txt').readlines()

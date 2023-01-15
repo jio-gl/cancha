@@ -4,7 +4,7 @@ import html.entities
 table_html = {k: '&{};'.format(v) for k, v in html.entities.codepoint2name.items()}
 import pathlib
 
-dir_path = pathlib.Path.cwd() + '/'
+dir_path = str(pathlib.Path.cwd()) + '/'
 
 
 from calciomercato import getLatest, filterLatest
