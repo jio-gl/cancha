@@ -2,6 +2,10 @@
 import time, json
 import html.entities
 table_html = {k: '&{};'.format(v) for k, v in html.entities.codepoint2name.items()}
+import pathlib
+
+dir_path = pathlib.Path.cwd() + '/'
+
 
 from calciomercato import getLatest, filterLatest
 from api_completion import transformNews
@@ -15,14 +19,14 @@ prompts = all_prompts[blog]
 def alreadyPublished(article):
     retVal = False
     try:
-        open(blog + '/' + article['item'], 'r')
+        open(dir_path + blog + '/' + article['item'], 'r')
         retVal = True
     except:
         retVal = False
     return retVal
 
 def savePublished(article):
-    open(blog + '/' + article['item'], 'w').write( json.dumps(article) )
+    open(dir_path + blog + '/' + article['item'], 'w').write( json.dumps(article) )
 
 def postNews(blog):
 

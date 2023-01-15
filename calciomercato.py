@@ -4,11 +4,14 @@
 import urllib.request 
 from bs4 import BeautifulSoup
 import html, time
+import pathlib
+
+dir_path = pathlib.Path.cwd() + '/'
 
 def filterLatest(art_list):
-    jugadores = open('jugadores.txt').readlines()
+    jugadores = open(dir_path + 'jugadores.txt').readlines()
     jugadores = [' '.join(j.strip().split(' ')[1:]) for j in jugadores]
-    equipos = open('equipos.txt').readlines()
+    equipos = open(dir_path + 'equipos.txt').readlines()
     equipos = [j.strip() for j in equipos]
     whitelist = list(set(jugadores+equipos))
     print(whitelist)
@@ -30,7 +33,7 @@ def getLatest(url='https://www.calciomercato.com/feed', debug=False):
     retVal = []
 
     if debug:
-        response_text = open('feed.xml').read()
+        response_text = open(dir_path + 'feed.xml').read()
     else:
         response = urllib.request.urlopen( url ) 
         response_text = response.read() 
