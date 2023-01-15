@@ -35,7 +35,7 @@ def postNews(blog):
     news = filterLatest(news)
     #print(news)
 
-    for article in news[:10]:
+    for article in news[:100]:
 
         # 1. check if already published
         if alreadyPublished(article):
@@ -73,6 +73,7 @@ def postNews(blog):
         print('INFO: ###4. publish')
         bloggerPost(html_title, html_body)
         #break
+        # https://www.mattcrampton.com/blog/step_by_step_tutorial_to_post_to_twitter_using_python/
 
         # 5. saving published
         print('INFO: ###5. saving published')
