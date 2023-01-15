@@ -21,6 +21,8 @@ def filterLatest(art_list):
                 break
         if good:
             retVal.append( art )
+        else:
+            print('INFO: filtering out (no whitelist keywords) -> ' + art['item'])
     return retVal
 
 
