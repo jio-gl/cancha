@@ -1,0 +1,80 @@
+
+import time, json
+import html.entities
+table_html = {k: '&{};'.format(v) for k, v in html.entities.codepoint2name.items()}
+
+from calciomercato import getLatest, filterLatest
+from api_completion import transformNews
+from configuration import all_prompts
+from blogger import bloggerPost
+
+blog = 'cancha24'
+prompts = all_prompts[blog]
+
+
+def alreadyPublished(article):
+    retVal = False
+    try:
+        open(blog + '/' + article['item'], 'r')
+        retVal = True
+    except:
+        retVal = False
+    return retVal
+
+def savePublished(article):
+    open(blog + '/' + article['item'], 'w').write( json.dumps(article) )
+
+def postNews(blog):
+
+    news = getLatest(debug=False)
+    # filter by some keywords
+    news = filterLatest(news)
+    #print(news)
+
+    for article in news[:10]:
+
+        # 1. check if already published
+        if alreadyPublished(article):
+            print('INFO: already published article -> ' + article['item'])
+            continue
+        print ('INFO: 1. check if already published')
+        #print(article)
+
+        # 2. transform with AI
+        try:
+            article['target_title'] = transformNews(article['title'], prompt=prompts['title'])
+            time.sleep(2)
+            print('sleeping 2 seconds before next AI transform ...')
+            article['target_body'] = transformNews(article['body'], prompt=prompts['body'])
+        except:
+            print('ERROR: error transforming data with AI, possibly text too long.')
+            continue 
+
+        # 3. organize source and image and HTML
+        html_title = article['target_title'].translate(table_html)
+        html_body = ''
+        if 'image' in article:
+            html_body += '<div style="text-align: center;">'
+            html_body += '<img src="%s"></img><br/>\n' % article['image']
+            html_body += '</div>'
+        # body
+        html_body += '<div style="text-align: justify;">'
+        html_body += article['target_body'].translate(table_html)
+        html_body += '</div>'
+        html_body += '\n\n<br/><br/><small><a href="%s">Fuente</a></small>\n' % article['item_url']
+
+        # 4. publish
+        bloggerPost(html_title, html_body)
+        #break
+
+        # 5. saving published
+        savePublished( article )
+
+        # https://github.com/raghur/easyblogger
+        time.sleep(2.0)
+        print('INFO: sleeping 5 seconds per published news article ...')
+        pass
+
+
+if __name__ == '__main__':
+    postNews(blog)
