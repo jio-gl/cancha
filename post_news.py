@@ -37,10 +37,11 @@ def postNews(blog):
         if alreadyPublished(article):
             print('INFO: already published article -> ' + article['item'])
             continue
-        print ('INFO: 1. check if already published')
+        print ('INFO: ###1. check if already published')
         #print(article)
 
         # 2. transform with AI
+        print('INFO: ###2. transform with AI')
         try:
             article['target_title'] = transformNews(article['title'], prompt=prompts['title'])
             time.sleep(2)
@@ -51,6 +52,7 @@ def postNews(blog):
             continue 
 
         # 3. organize source and image and HTML
+        print('INFO: ###3. organize source and image and HTML')
         html_title = article['target_title'].translate(table_html)
         html_body = ''
         if 'image' in article:
@@ -64,10 +66,12 @@ def postNews(blog):
         html_body += '\n\n<br/><br/><small><a href="%s">Fuente</a></small>\n' % article['item_url']
 
         # 4. publish
+        print('INFO: ###4. publish')
         bloggerPost(html_title, html_body)
         #break
 
         # 5. saving published
+        print('INFO: ###5. saving published')
         savePublished( article )
 
         # https://github.com/raghur/easyblogger
