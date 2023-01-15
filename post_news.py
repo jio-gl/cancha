@@ -35,7 +35,7 @@ def postNews(blog):
     news = filterLatest(news)
     #print(news)
 
-    for article in news[:100]:
+    for article in news[:10]:
 
         # 1. check if already published
         if alreadyPublished(article):
