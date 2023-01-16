@@ -45,7 +45,7 @@ def transformNews( input_text, prompt ):
 #prompt_body = prompts['body'] #'Parafrasear en estilo argentino el siguiente texto y expandirlo con opiniones coloridas, realistas, virales y populares pero sin contenido politico para hacer la noticia mas viral:'
 #prompt_title = prompts['title']
 #input = "PSG, Messi verso il rinnovo: ecco quando firma" #"Messi, l'Inter Miami sogna ancora. Neville: 'Perché no? Potrebbe succedere'"
-#prompt = 'Parafrasear en estilo argentino el siguiente titulo y hacerlo mas viral tipo click-bait:'
+#prompt = 'Parafrasear en estilo argentino el siguiente titulo y hacerlo mas viral y llamativo:'
 
 if __name__ == '__main__':
     #prompt = prompt_body
