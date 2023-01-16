@@ -29,7 +29,8 @@ def filterLatest(art_list):
     return retVal
 
 
-def getLatest(url='https://www.calciomercato.com/feed/mercato', debug=False):
+#def getLatest(url='https://www.calciomercato.com/feed/mercato', debug=False):
+def getLatest(url='https://www.calciomercato.com/feed', debug=False):
     retVal = []
 
     if debug:
