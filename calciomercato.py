@@ -78,8 +78,8 @@ def getLatest(url='https://www.calciomercato.com/feed/mercato', debug=False):
             out_item['image'] = photos[0]['content']
             # https://freeimage.host/page/api
         retVal.append( out_item )
-        time.sleep(2.0)
-        print('INFO: sleeping 2 seconds after requesting an article to new site ...')
+        time.sleep(10.0)
+        print('INFO: sleeping 10 seconds after requesting an article to new site ...')
             
         print('-'*80)
     return retVal
