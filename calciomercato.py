@@ -29,7 +29,7 @@ def filterLatest(art_list):
     return retVal
 
 
-def getLatest(url='https://www.calciomercato.com/feed', debug=False):
+def getLatest(url='https://www.calciomercato.com/feed/mercato', debug=False):
     retVal = []
 
     if debug:
@@ -41,7 +41,7 @@ def getLatest(url='https://www.calciomercato.com/feed', debug=False):
 
     soup = BeautifulSoup(response_text, 'html.parser')
 
-    for i in soup.find_all('item')[:10]:
+    for i in soup.find_all('item')[:5]:
         out_item = {}
         item = BeautifulSoup(str(i), 'html.parser')
         item_url = 'https://www.calciomercato.com/news/' + html.unescape(item.guid.text)
