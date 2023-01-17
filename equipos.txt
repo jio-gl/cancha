@@ -36,3 +36,68 @@ sudamericana
 sudamericano
 Sudamericana
 AFA
+Bayern
+Borussia
+Schalke
+Werder Bremen
+Hamburgo
+Stuttgart
+Borussia
+Eintracht
+Colonia
+Kaiserslautern
+Real Madrid
+Barcelona
+Atletico De Madrid
+Athletic De Bilbao
+Valencia
+Sevilla
+Real Zaragoza
+Real Sociedad
+La Coruna
+Espanyol
+Paris Saint-Germain
+PSG
+Olympique
+Marsella
+Saint-Etienne
+Olympique
+Lyon
+Monaco
+Girondins
+Bordeaux
+Nantes
+Reims
+Lille
+Nice
+AJAX
+Ajax
+Eindhoven
+PSV
+Feyenoord
+Manchester
+Liverpool
+Arsenal
+Chelsea
+City
+Tottenham
+Hotspur
+Everton
+Aston Villa
+Newcastle
+Nottingham
+Juventus F.C.
+Milan
+Internazionale
+Roma
+Lazio
+Torino
+Napoli
+Genoa
+Bologna
+Fiorentina
+Benfica
+Porto
+Lisboa
+Boavista
+Belenenses
