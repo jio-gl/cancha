@@ -37,7 +37,13 @@ def transformNews( input_text, prompt ):
 
     print(response.text)
     #print (json.loads(response.text)['choices'][0]['text'])
-    return json.loads(response.text)['choices'][0]['text']
+    resp = json.loads(response.text)['choices'][0]['text']
+    if resp.startswith("'"):
+        resp = resp[1:]
+    if resp.endswith("'"):
+        resp = resp[:-1]
+
+    return resp
 
 
 
