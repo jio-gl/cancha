@@ -69,7 +69,7 @@ def getLatest(url='https://www.calciomercato.com/feed/mercato', debug=False):
                 someint = int(body.split('\n')[0])
                 body = '\n'.join( body.split('\n')[1:] ).strip()
             except:
-                continue
+                pass
             if body[0] in ['1','2','3','4','5','6','7','8','9']:
                 body = body[1:].strip()
             if body.splitlines()[-1].startswith('.find'):
