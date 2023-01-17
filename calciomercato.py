@@ -90,6 +90,7 @@ def getLatest(url='https://www.calciomercato.com/feed/mercato', debug=False):
     return retVal
 
 if __name__ == '__main__':
+    filterLatest([])
     print(getLatest())
     
     
