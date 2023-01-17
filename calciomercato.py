@@ -52,6 +52,8 @@ def getLatest(url='https://www.calciomercato.com/feed/mercato', debug=False):
         out_item['title'] = html.unescape(item.title.text)
         if out_item['title'].startswith("'"):
             out_item['title'] = out_item['title'][1:]
+        if out_item['title'].endswith("'"):
+            out_item['title'] = out_item['title'][:-1]
         print(item_url)
         out_item['item_url'] = item_url
         out_item['item'] = pubDate + '_' + html.unescape(item.guid.text)
