@@ -99,11 +99,12 @@ def bloggerPost(title='Titulo generico', body='Cuerpo de la nota... blabla...', 
             while request != None:
                 posts_doc = request.execute()
                 
-                #print('DEBUG: ' + str(posts_doc))
+                print('DEBUG: ' + str(posts_doc))
                 if "items" in posts_doc and not (posts_doc["items"] is None):
                     for post in posts_doc["items"]:
                         print("  %s (%s)" % (post["title"], post["url"]))
                 request = posts.list_next(request, posts_doc)
+            return posts_doc['url']
 
     except client.AccessTokenRefreshError:
         print(

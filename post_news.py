@@ -11,6 +11,7 @@ from calciomercato import getLatest, filterLatest
 from api_completion import transformNews
 from configuration import all_prompts
 from blogger import bloggerPost
+from twitter_bot import twit_payload
 
 blog = 'cancha24'
 prompts = all_prompts[blog]
@@ -76,13 +77,17 @@ def postNews(blog):
 
         # 4. publish
         print('INFO: ###4. publish')
-        bloggerPost(html_title, html_body)
+        blog_post_url = bloggerPost(html_title, html_body)
         #break
         # https://www.mattcrampton.com/blog/step_by_step_tutorial_to_post_to_twitter_using_python/
 
         # 5. saving published
         print('INFO: ###5. saving published')
         savePublished( article )
+
+        # 6. posting twit
+        print('INFO: ###6. posting twit')
+        twit_payload(title, blog_post_url )
 
         # https://github.com/raghur/easyblogger
         time.sleep(2.0)
