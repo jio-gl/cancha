@@ -24,7 +24,7 @@ def connect_to_oauth(consumer_key, consumer_secret, acccess_token, access_token_
 
 
 def twit_payload(text, twit_url):
-    fact = text + ' ' + twit_url
+    fact = text + '\n\n' + twit_url
     payload = format_twit(fact)
     url, auth = connect_to_oauth(
         consumer_key, consumer_secret, access_token, access_token_secret
