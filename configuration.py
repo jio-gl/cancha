@@ -5,4 +5,8 @@ all_prompts = {
     }
 }
 
+publishing = {
+    'cancha24' : { 'rate' : 1 } # 1 article per hour
+}
+
 

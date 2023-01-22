@@ -42,7 +42,7 @@ def getLatest(url='https://www.calciomercato.com/feed/mercato', debug=False):
 
     soup = BeautifulSoup(response_text, 'html.parser')
 
-    for i in soup.find_all('item')[:4]:
+    for i in soup.find_all('item')[:1]:
         out_item = {}
         item = BeautifulSoup(str(i), 'html.parser')
         item_url = 'https://www.calciomercato.com/news/' + html.unescape(item.guid.text)
