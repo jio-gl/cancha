@@ -57,7 +57,12 @@ def postNews(blog):
 
         # 3. organize source and image and HTML
         print('INFO: ###3. organize source and image and HTML')
-        html_title = article['target_title'].translate(table_html)
+        title = article['target_title']
+        if title.startswith("'"):
+            title = title[1:]
+        if title.endswith("'") and title.count("'")%2 == 1:
+            title = title[:-1]
+        html_title = title.translate(table_html)
         html_body = ''
         if 'image' in article:
             html_body += '<div style="text-align: center;">'
