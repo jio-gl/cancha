@@ -2,11 +2,15 @@ import requests
 from requests_oauthlib import OAuth1
 import os
 
-
 consumer_key = '..' #os.environ.get("CONSUMER_KEY")
 consumer_secret = '..' #os.environ.get("CONSUMER_SECRET")
 access_token = '..' # os.environ.get("ACCESS_TOKEN")
 access_token_secret = '..' #os.environ.get("ACCESS_TOKEN_SECRET")
+
+# Docs
+# https://developer.twitter.com/en/docs/twitter-api/tweets/manage-tweets/api-reference/post-tweets
+# https://developer.twitter.com/en/docs/twitter-api/v1/media/upload-media/api-reference/post-media-upload
+# https://twittercommunity.com/t/how-to-show-an-image-in-a-v2-api-tweet/163169/4
 
 def random_fact():
     fact = requests.get("https://catfact.ninja/fact?max_length=280").json()
