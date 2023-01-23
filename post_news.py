@@ -58,11 +58,18 @@ def postNews(blog):
 
         # 3. organize source and image and HTML
         print('INFO: ###3. organize source and image and HTML')
+        # remove ""s if neccesary
         title = article['target_title']
+        if title.startswith('"'):
+            title = title[1:]
+        if title.endswith('"') and title.count('"')%2 == 1:
+            title = title[:-1]
+        # remove ''s if necessary
         if title.startswith("'"):
             title = title[1:]
         if title.endswith("'") and title.count("'")%2 == 1:
             title = title[:-1]
+        # convert to html entities
         html_title = title.translate(table_html)
         html_body = ''
         if 'image' in article:
@@ -71,7 +78,7 @@ def postNews(blog):
             html_body += '</div>'
         # body
         html_body += '<div style="text-align: justify;">'
-        html_body += article['target_body'].translate(table_html)
+        html_body += article['target_body'].translate(table_html).replace('\n','<br/>')
         html_body += '</div>'
         html_body += '\n\n<br/><br/><small><a href="%s">Fuente</a></small>\n' % article['item_url']
 
