@@ -87,7 +87,7 @@ def postNews(blog):
 
         # 6. posting twit
         print('INFO: ###6. posting twit')
-        twit_payload(title, blog_post_url )
+        twit_payload(title, blog_post_url, article['image'] )
 
         # https://github.com/raghur/easyblogger
         time.sleep(2.0)
